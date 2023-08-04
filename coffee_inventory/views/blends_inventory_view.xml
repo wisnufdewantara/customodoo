@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record model="ir.ui.view" id="blends_inventory_form_view">
+            <field name="name">blends.inventory.form.view</field>
+            <field name="model">blends.inventory</field>
+            <field name="arch" type="xml">
+                <form string="Pop-Up Blends">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1 class="o_row">
+                                <field name="blends_id" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="name"/>
+                            <field name="pre_mix"/>
+                        </group>
+                    </sheet> 
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="blends_inventory_tree_view">
+            <field name="name">blends.inventory.tree.view</field>
+            <field name="model">blends.inventory</field>
+            <field name="arch" type="xml">
+                <tree string="Pop-Up Coffee">
+                    <field name="blends_id" readonly="1"/>
+                    <field name="name" />
+                    <field name="pre_mix"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="blends_action" >
+            <field name="name">Blends</field>
+            <field name="res_model">blends.inventory</field>
+             <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem
+            id="blends_action_rules_config"
+            action="blends_action"
+            name="Blends" parent="stock.menu_stock_inventory_control" sequence="3"/>
+</odoo>

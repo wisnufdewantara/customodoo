@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record model="ir.ui.view" id="grind_inventory_form_view">
+            <field name="name">grind.inventory.form.view</field>
+            <field name="model">grind.inventory</field>
+            <field name="arch" type="xml">
+                <form string="Pop-Up Grind">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="object" name="toggle_active" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1 class="o_row">
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <div class="oe_title">
+                            <h1 class="o_row">
+                                <!-- <field name="name" readonly="1"/> -->
+                                <field name="grind_name" placeholder="Name..." />
+                            </h1>
+                        </div>
+                         
+                    </sheet>    
+                    
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="grind_inventory_tree_view">
+            <field name="name">grind.inventory.tree.view</field>
+            <field name="model">grind.inventory</field>
+            <field name="arch" type="xml">
+                <tree string="Pop-Up Grind">
+                    <field name="name" readonly="1"/>
+                    <field name="grind_name" />
+                    <field name="active" widget="boolean_button"
+                                options='{"terminology": "archive"}'/>
+                    <field name="created_date"/>            
+                </tree>
+            </field>
+        </record>               
+       
+        <record id="grinds_action" model="ir.actions.act_window">
+            <field name="name">Grinds</field>
+            <field name="res_model">grind.inventory</field>
+             <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            
+        </record>
+
+        <menuitem
+            id="menu_grinds_rules_config"
+            action="grinds_action"
+            name="Grinds" parent="stock.menu_product_in_config_stock" sequence="2"/>
+</odoo>

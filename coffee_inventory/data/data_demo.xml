@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="coffees_inventory_order" model="ir.sequence">
+            <field name="name">Coffees</field>
+            <field name="code">coffees.inventory</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="grind_inventory_order" model="ir.sequence">
+            <field name="name">Grind</field>
+            <field name="code">grind.inventory</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

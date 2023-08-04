@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record model="ir.ui.view" id="coffes_inventory_form_view">
+            <field name="name">coffees.inventory.form.view</field>
+            <field name="model">coffees.inventory</field>
+            <field name="arch" type="xml">
+                <form string="Pop-Up Coffee">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="object" name="toggle_active" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1 class="o_row">
+                                <field name="name" readonly="1"/>
+                                <!-- <field name="coffee_name" placeholder="Name..." /> -->
+                            </h1>
+                        </div>
+                        <div class="oe_title">
+                            <h1 class="o_row">
+                                <field name="coffee_name" placeholder="Name..." />
+                            </h1>
+                        </div>
+                         <group>
+                            <group>
+                                <field name="beans_to_coffee_conversionfactor"/>
+                                <field name="show_on_customer_dashboard"/>
+                                <field name="include_in_mix_bag"/>            
+                            </group>
+                            <group>
+                                <field name="short_description"/>
+                               
+                            </group>
+                        </group>
+                        <notebook>
+                        <page string="Minimum Stock Levels">
+                            <field name="roastery_id" mode="tree">
+                                <tree string="Coffees Order Lines" editable="bottom">
+                                    <field name="roastery"/>
+                                    <field name="quantity_in_gms"/>
+                                </tree>    
+                            </field>
+                        </page>
+                        </notebook>
+                    </sheet>    
+                    
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="coffes_inventory_tree_view">
+            <field name="name">coffees.inventory.tree.view</field>
+            <field name="model">coffees.inventory</field>
+            <field name="arch" type="xml">
+                <tree string="Pop-Up Coffee">
+                    <field name="name" readonly="1"/>
+                    <field name="coffee_name" />
+                    <field name="beans_to_coffee_conversionfactor"/>
+                    <field name="active" widget="boolean_button"
+                                options='{"terminology": "archive"}'/>
+                    <field name="show_on_customer_dashboard"/>            
+                    <field name="short_description"/>
+                    <field name="created_date"/>  
+                    <field name="include_in_mix_bag"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="coffees_action" >
+            <field name="name">Coffees</field>
+            <field name="res_model">coffees.inventory</field>
+             <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            
+        </record>
+        
+        <menuitem
+            id="menu_reordering_rules_config"
+            action="coffees_action"
+            name="Coffees" parent="stock.menu_stock_inventory_control" sequence="2"/>
+</odoo>
